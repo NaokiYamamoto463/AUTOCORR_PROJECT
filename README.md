@@ -1,6 +1,6 @@
 # Autocorrelation
 
-`data` folderにある最初の `.bin` ファイルを読み込み、自己相関を計算して `output` folderへ保存します。
+`data` フォルダにある最初の `.bin` ファイルを読み込み、自己相関を計算して `output` フォルダへ保存します。
 
 ## Files
 
@@ -12,27 +12,30 @@ autocorr_project/
   requirements.txt      Python dependencies
 ```
 
-`.venv` はローカル環境用なので、壊れたら作り直して大丈夫です。
-
 ## Setup
+
+PowerShell:
 
 ```powershell
 py -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+.\.venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt
+```
+
+Git Bash / WSL / Linux:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
 ```
 
 ## Run
 
-`data` folderに `.bin` ファイルを入れてから実行します。
+`data` フォルダに `.bin` ファイルを入れてから実行します。
 
 ```powershell
-.\.venv\Scripts\python.exe src\autocorr.py
-```
-
-ラグ数を変える場合:
-
-```powershell
-.\.venv\Scripts\python.exe src\autocorr.py --max-lag 500
+python src\autocorr.py
 ```
 
 出力:
