@@ -27,7 +27,7 @@ def autocorrelation(x, max_lag):
     return np.array(result)
 
 def main():
-    input_file = list(Path("data").glob("*.bin"))[0]
+    input_file = list(Path("data").glob("*.bin"))
 
     if len(bin_files := list(Path("data").glob("*.bin"))) == 0:
         print("dataフォルダに .bin ファイルが見つかりませんでした。")
