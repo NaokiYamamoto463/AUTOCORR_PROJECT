@@ -2,7 +2,7 @@
 
 `data` フォルダにある最初の `.bin` ファイルを読み込み、自己相関を計算して `output` フォルダへ保存します。
 
-## Files
+## ファイル
 
 ```text
 autocorr_project/
@@ -12,7 +12,7 @@ autocorr_project/
   requirements.txt      Python dependencies
 ```
 
-## Setup
+## セットアップ
 
 PowerShell:
 
@@ -30,12 +30,12 @@ source .venv/bin/activate
 python -m pip install -r requirements.txt
 ```
 
-## Run
+## 出力
 
 `data` フォルダに `.bin` ファイルを入れてから実行します。
 
 ```powershell
-python src\autocorr.py
+python src/autocorr.py
 ```
 
 出力:
