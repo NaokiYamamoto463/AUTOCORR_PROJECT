@@ -34,7 +34,7 @@ def main():
         return
     
     input_file = bin_files[0]
-    max_lag = 1000
+    max_lag = 100
 
     output_dir = Path("output")
     output_dir.mkdir(exist_ok=True)
@@ -44,12 +44,29 @@ def main():
 
     np.savetxt(output_dir / "autocorrelation.csv", ac, delimiter=",")
 
+    lags = np.arange(len(ac))
+
+    diff = np.diff(ac)
+
+    peak_lags = [0]
+    peak_values = [ac[0]]
+
+    for i in range(1, len(diff)):
+        if diff[i - 1] > 0 and diff[i] < 0:
+            peak_lags.append(i)
+            peak_values.append(ac[i])
+
     plt.figure()
-    plt.plot(range(len(ac)), ac, marker="o")
+    plt.plot(lags, ac, label="Autocorrelation")
+
+    plt.scatter(peak_lags, peak_values, color="red", zorder=5, label="Peaks")
+    plt.plot(peak_lags, peak_values, color="red", linestyle="--", label="Peak line")
+
     plt.xlabel("Lag h")
     plt.ylabel("Autocorrelation r(h)")
     plt.title("Autocorrelation Function")
     plt.grid(True)
+    plt.legend()
     plt.savefig(output_dir / "autocorrelation.png")
 
     print(f"input file: {input_file}")
