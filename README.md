@@ -14,9 +14,9 @@ autocorr_project/
 
 ## セットアップ
 
-...
+'''
 mkdir data
-...
+'''
 
 PowerShell:
 
